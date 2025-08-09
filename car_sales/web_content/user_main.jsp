@@ -188,7 +188,7 @@
                 }
             } catch (Exception e) {
                 // Display user-friendly error message
-                out.println("<p style='color: red;'>An error occurred while fetching the data. Please try again later.</p>");
+                out.println("<p style='color: red;'>An error occurred while fetching the data. Please try again later.(Customer)</p>");
                 e.printStackTrace();
             } finally {
                 // Close the resources

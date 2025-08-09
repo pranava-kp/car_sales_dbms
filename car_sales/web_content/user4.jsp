@@ -135,11 +135,11 @@
     <div class="dropdown">
         <button class="dropbtn">Options</button>
         <div class="dropdown-content">
-           <a href="user1.jsp">Current Car Models</a>
+            <a href="user_main.jsp">Home</a>
+           <a href="user1.jsp">Current Models</a>
             <a href="user2.jsp">Mileage (Corelated Query)</a>
             <a href="user3.jsp">My Cars</a>
-            <a href="user4.jsp">Update Details</a>
-            <a href="user_main.jsp">Home</a>
+            <!-- <a href="user4.jsp">Update Details</a> -->
         </div>
     </div>
 </div>
