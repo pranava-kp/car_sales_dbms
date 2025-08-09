@@ -149,15 +149,15 @@
 
                 // Prepare the SQL query based on the selected option
                 String sql = "";
-                if ("registeredCars".equals(selectedOption)) {
-                    sql = "SELECT Name, Phone, Reg_no FROM rto r JOIN car c ON r.RTO_ID = c.RTO_ID";
-                } else if ("option2".equals(selectedOption)) {
-                    sql = "SELECT * FROM SOME_OTHER_TABLE"; // Replace with actual table name
-                } else if ("option3".equals(selectedOption)) {
-                    sql = "SELECT * FROM ANOTHER_TABLE"; // Replace with actual table name
-                } else {
+                // if ("registeredCars".equals(selectedOption)) {
+                //     sql = "SELECT Name, Phone, Reg_no FROM rto r JOIN car c ON r.RTO_ID = c.RTO_ID";
+                // } else if ("option2".equals(selectedOption)) {
+                //     sql = "SELECT * FROM SOME_OTHER_TABLE"; // Replace with actual table name
+                // } else if ("option3".equals(selectedOption)) {
+                //     sql = "SELECT * FROM ANOTHER_TABLE"; // Replace with actual table name
+                // } else {
                     sql = "select * from RTO_VIEW;"; // Default empty SQL query if no option matches
-                }
+                // }
 
                 if (!sql.isEmpty()) {
                     pstmt = conn.prepareStatement(sql);
@@ -186,7 +186,7 @@
                 }
             } catch (Exception e) {
                 // Display user-friendly error message
-                out.println("<p style='color: red;'>An error occurred while fetching the data. Please try again later.</p>");
+                out.println("<p style='color: red;'>An error occurred while fetching the data. Please try again later.(RTO)</p>");
                 e.printStackTrace();
             } finally {
                 // Close the resources

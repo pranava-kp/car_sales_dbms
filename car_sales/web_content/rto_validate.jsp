@@ -19,7 +19,7 @@ String dbPassword = "1711011";
 try {
     Class.forName("com.mysql.cj.jdbc.Driver");
     try (Connection con = DriverManager.getConnection(JDBC, dbUser, dbPassword);
-         PreparedStatement st = con.prepareStatement("SELECT * FROM admin_login WHERE username=? AND password=?")) {
+         PreparedStatement st = con.prepareStatement("SELECT * FROM rto_login WHERE user_id=? AND password=?")) {
         st.setString(1, user_id);
         st.setString(2, password);
         try (ResultSet rs = st.executeQuery()) {

@@ -114,7 +114,7 @@
     <div class="dropdown">
         <button class="dropbtn">Options</button>
         <div class="dropdown-content">
-            <a href="rto1.jsp">Valuable Buyers  (Nested Query)</a>
+            <!-- <a href="rto1.jsp">Valuable Buyers  (Nested Query)</a> -->
             <a href="rto_main.jsp">Home</a>
         </div>
     </div>
