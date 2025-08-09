@@ -3,9 +3,9 @@
 String username = request.getParameter("user_id");
 String password = request.getParameter("password");
 
-String JDBC = "jdbc:mysql://localhost:3306/rto";
-String dbUser = "root";
-String dbPassword = "1711011";
+String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
+String dbUser = "root"; //MYSQLUSERNAME
+String dbPassword = MYSQLPASSWORD;
 
 try {
     Class.forName("com.mysql.cj.jdbc.Driver");

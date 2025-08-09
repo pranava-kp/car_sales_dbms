@@ -134,9 +134,9 @@
             PreparedStatement pstmt = null;
             ResultSet rs = null;
 
-            String JDBC = "jdbc:mysql://localhost:3306/rto";
-            String dbUser = "root";
-            String dbPassword = "1711011";
+            String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
+            String dbUser = "root"; //MYSQLUSERNAME
+            String dbPassword = MYSQLPASSWORD;
 
             try {
                 // Load the JDBC driver
