@@ -14,7 +14,7 @@ String password = request.getParameter("password");
 
 String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
 String dbUser = "root"; //MYSQLUSERNAME
-String dbPassword = MYSQLPASSWORD;
+String dbPassword = "MYSQLPASSWORD";
 
 try {
     Class.forName("com.mysql.cj.jdbc.Driver");

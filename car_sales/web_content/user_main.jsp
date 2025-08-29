@@ -54,6 +54,10 @@
         .toolbar .dropdown-content a:hover {
             background-color: #f1f1f1;
         }
+        .toolbar .dropdown-content a.active {
+            background-color: #007bff;
+            color: white;
+        }
         .toolbar .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -112,18 +116,19 @@
     </script>
 </head>
 <body>
+<% String currentPage = "home"; %>
 <img src="design.jpeg" alt="JAL-GAAR" class="video-background">
-
     <img src="geenie.jpg" alt="JAL-GAAR" class="logo">
 
     <div class="toolbar">
         <div class="dropdown">
             <button class="dropbtn">Options</button>
             <div class="dropdown-content">
-                <a href="user1.jsp" onclick="executeQuery('option1')">Current Models</a>
-                <a href="user2.jsp" onclick="executeQuery('option2')">Mileage (Corelated Query)</a>
-                <a href="user3.jsp" onclick="executeQuery('option3')">My Cars</a>
-                <a href="user4.jsp" onclick="executeQuery('option3')">Update Details</a>
+                <a href="user_main.jsp" class="<%= "home".equals(currentPage) ? "active" : "" %>">Home</a>
+                <a href="user1.jsp" class="<%= "user1".equals(currentPage) ? "active" : "" %>">Current Models</a>
+                <a href="user2.jsp" class="<%= "user2".equals(currentPage) ? "active" : "" %>">Mileage (Corelated Query)</a>
+                <a href="user3.jsp" class="<%= "user3".equals(currentPage) ? "active" : "" %>">My Cars</a>
+                <a href="user4.jsp" class="<%= "user4".equals(currentPage) ? "active" : "" %>">Update Details</a>
             </div>
         </div>
     </div>
@@ -139,7 +144,7 @@
 
             String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
             String dbUser = "root"; //MYSQLUSERNAME
-            String dbPassword = MYSQLPASSWORD;
+            String dbPassword = "MYSQLPASSWORD";
 
             try {
                 // Load the JDBC driver

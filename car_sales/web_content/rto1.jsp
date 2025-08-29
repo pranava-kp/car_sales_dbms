@@ -54,6 +54,10 @@
     .toolbar .dropdown-content a:hover {
         background-color: #f1f1f1;
     }
+    .toolbar .dropdown-content a.active {
+        background-color: #007bff;
+        color: white;
+    }
     .toolbar .dropdown:hover .dropdown-content {
         display: block;
     }
@@ -106,16 +110,16 @@
 </style>
 </head>
 <body>
+<% String currentPage = "rto1"; %>
 <img src="design.jpeg" alt="JAL-GAAR" class="video-background">
-
 <img src="geenie.jpg" alt="JAL-GAAR" class="logo">
 
 <div class="toolbar">
     <div class="dropdown">
         <button class="dropbtn">Options</button>
         <div class="dropdown-content">
-            <!-- <a href="rto1.jsp">Valuable Buyers  (Nested Query)</a> -->
-            <a href="rto_main.jsp">Home</a>
+            <a href="rto_main.jsp" class="<%= "rto_home".equals(currentPage) ? "active" : "" %>">Home</a>
+            <a href="rto1.jsp" class="<%= "rto1".equals(currentPage) ? "active" : "" %>">Valuable Buyers (Nested Query)</a>
         </div>
     </div>
 </div>
@@ -137,7 +141,7 @@
 
         String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
         String dbUser = "root"; //MYSQLUSERNAME
-        String dbPassword = MYSQLPASSWORD;
+        String dbPassword = "MYSQLPASSWORD";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

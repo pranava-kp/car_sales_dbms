@@ -54,6 +54,10 @@
         .toolbar .dropdown-content a:hover {
             background-color: #f1f1f1;
         }
+        .toolbar .dropdown-content a.active {
+        background-color: #007bff; 
+        color: white;
+        }
         .toolbar .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -112,6 +116,7 @@
     </script>
 </head>
 <body>
+<% String currentPage = "home"; %>
 <img src="design.jpeg" alt="JAL-GAAR" class="video-background">
 
     <img src="geenie.jpg" alt="JAL-GAAR" class="logo">
@@ -120,8 +125,9 @@
         <div class="dropdown">
             <button class="dropbtn">Options</button>
             <div class="dropdown-content">
-                <a href="company1.jsp" onclick="executeQuery('registeredCars')">Registered Cars (Join Operation)</a>
-                <a href="company2.jsp" onclick="executeQuery('option2')">Dealership (Select Operation)</a>
+                <a href="company_main.jsp" class="<%= "home".equals(currentPage) ? "active" : "" %>">Home</a>
+                <a href="company1.jsp" class="<%= "company1".equals(currentPage) ? "active" : "" %>">Registered Cars (Join Operation)</a>
+                <a href="company2.jsp" class="<%= "company2".equals(currentPage) ? "active" : "" %>">Dealership (Select Operation)</a>
             </div>
         </div>
     </div>
@@ -136,7 +142,7 @@
 
             String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
             String dbUser = "root"; //MYSQLUSERNAME
-            String dbPassword = MYSQLPASSWORD;
+            String dbPassword = "MYSQLPASSWORD";
 
             try {
                 // Load the JDBC driver
@@ -149,16 +155,7 @@
                 String selectedOption = request.getParameter("selectedOption");
 
                 // Prepare the SQL query based on the selected option
-                String sql = "";
-                if ("registeredCars".equals(selectedOption)) {
-                    sql = "SELECT Name, Phone, Reg_no FROM rto r JOIN car c ON r.RTO_ID = c.RTO_ID";
-                } else if ("option2".equals(selectedOption)) {
-                    sql = "SELECT * FROM SOME_OTHER_TABLE"; // Replace with actual table name
-                } else if ("option3".equals(selectedOption)) {
-                    sql = "SELECT * FROM ANOTHER_TABLE"; // Replace with actual table name
-                } else {
-                    sql = "select * from Manufacturer_View;"; // Default empty SQL query if no option matches
-                }
+                String sql = "select * from Manufacturer_View;"; // Default empty SQL query if no option matches
 
                 if (!sql.isEmpty()) {
                     pstmt = conn.prepareStatement(sql);

@@ -1,40 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Validation</title>
+</head>
+<body>
+
 <%
-String username = request.getParameter("user_id");
+String user_id = request.getParameter("user_id");
 String password = request.getParameter("password");
 
-String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
-String dbUser = "root"; //MYSQLUSERNAME
-String dbPassword = MYSQLPASSWORD;
+String JDBC = "jdbc:mysql://localhost:3306/rto";
+String dbUser = "root";
+String dbPassword = "MYSQLPASSWORD";
 
 try {
     Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection con = DriverManager.getConnection(JDBC, dbUser, dbPassword);
-    
-    String sql = "SELECT m.* FROM manufacturer_login ml " +
-                 "JOIN manufacturer m ON ml.manufacturer_id = m.ID " +
-                 "WHERE ml.username = ? AND ml.password = ?";
-    
-    PreparedStatement st = con.prepareStatement(sql);
-    st.setString(1, username);
-    st.setString(2, password);
-    
-    ResultSet rs = st.executeQuery();
-    
-    if (rs.next()) {
-        // Store manufacturer info in session
-        session.setAttribute("user_id", rs.getString("ID"));
-        session.setAttribute("company_name", rs.getString("Name"));
-        response.sendRedirect("company_main.jsp");
-    } else {
-        response.sendRedirect("error.jsp?message=Invalid+credentials");
+    try (Connection con = DriverManager.getConnection(JDBC, dbUser, dbPassword);
+         PreparedStatement st = con.prepareStatement("SELECT * FROM manufacturer_login WHERE user_id=? AND password=?")) {
+        st.setString(1, user_id);
+        st.setString(2, password);
+        try (ResultSet rs = st.executeQuery()) {
+            if (rs.next()) {
+                // Store user_id in session
+                session.setAttribute("user_id", user_id);
+                response.sendRedirect("company_main.jsp");
+            } else {
+                response.sendRedirect("error.jsp");
+            }
+        }
     }
-    
-    rs.close();
-    st.close();
-    con.close();
-} catch (Exception e) {
-    out.println("Error: " + e.getMessage());
+} catch (ClassNotFoundException e) {
+    out.println("JDBC Driver not found. Please add the JDBC library to your project.");
+    e.printStackTrace();
+} catch (SQLException e) {
+    out.println("Error connecting to the database: " + e.getMessage());
     e.printStackTrace();
 }
 %>
+</body>
+</html>

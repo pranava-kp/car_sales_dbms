@@ -119,9 +119,8 @@ CREATE TABLE user_login (
 );
 
 CREATE TABLE manufacturer_login (
-    username VARCHAR(50),
-    password VARCHAR(100),
-    manufacturer_id VARCHAR(50)
+    user_id VARCHAR(50),
+    password VARCHAR(100)
 );
 
 CREATE TABLE rto_login (
@@ -135,11 +134,11 @@ VALUES
 ('SURESH S', 'password456'),
 ('VIGNESH R', 'password789');
 
-INSERT INTO manufacturer_login (username, password, manufacturer_id)
+INSERT INTO manufacturer_login (user_id, password)
 VALUES
-('Honda', 'honda456', 'HMC'),
-('Hyundai', 'hyundai789', 'HMIL'),
-('Maruti', 'maruti123', 'MARUTI');
+('Honda', 'honda456'),
+('Hyundai', 'hyundai789'),
+('Maruti', 'maruti123');
 
 INSERT INTO rto_login (user_id, password)
 VALUES
@@ -154,4 +153,8 @@ JOIN BUY_FROM bf ON m.ID = bf.ID
 JOIN CUSTOMER c ON bf.Invoice_no = c.Invoice_no
 GROUP BY m.ID, m.Name, m.Phone_Number, m.Email_ID, m.Revenue;
 
-CREATE VIEW RTO_VIEW AS SELECT R.RTO_ID, R.Name,CA.Reg_no, C.Name AS Owner_Name FROM RTO R JOIN CAR CA ON R.RTO_ID = CA.RTO_ID JOIN CUSTOMER C ON CA.Invoice_Number = C.Invoice_no;
+CREATE or replace VIEW RTO_VIEW AS 
+SELECT R.RTO_ID, R.Name,CA.Reg_no, C.Name AS Owner_Name 
+FROM RTO R 
+JOIN CAR CA ON R.RTO_ID = CA.RTO_ID 
+JOIN CUSTOMER C ON CA.Invoice_Number = C.Invoice_no;
