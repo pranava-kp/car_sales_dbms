@@ -150,7 +150,7 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(JDBC, dbUser, dbPassword);
 
-            String sql = "SELECT Model_Name, Base_price, Year_of_prod FROM Model order BY base_price;";
+            String sql = "SELECT Model_Name, Base_price, Year_of_prod FROM MODEL order BY base_price;";
 
             pstmt = conn.prepareStatement(sql);
 
