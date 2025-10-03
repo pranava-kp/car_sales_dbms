@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="config.DatabaseConfig" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,9 +141,9 @@
             PreparedStatement pstmt = null;
             ResultSet rs = null;
 
-            String JDBC = "jdbc:mysql://localhost:3306/rto"; //MYSQLURL
-            String dbUser = "root"; //MYSQLUSERNAME
-            String dbPassword = "MYSQLPASSWORD";
+            String JDBC = DatabaseConfig.JDBC_URL;
+            String dbUser = DatabaseConfig.DB_USER;
+            String dbPassword = DatabaseConfig.DB_PASSWORD;
 
             try {
                 // Load the JDBC driver
