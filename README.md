@@ -25,7 +25,7 @@ First, you need to set up the MySQL database. A sample database script is includ
 1.  Open your MySQL shell or client.
 2.  Execute the `PopulateDB.sql` script included in the project. This script will create the necessary database, tables, views, and insert sample data.
 
-## 2\. Configure Database Connection
+### 2\. Configure Database Connection
 
 1.  **Edit the configuration file**: Navigate to `web_content/config/` and open `DatabaseConfig.java`. Update the `JDBC_URL`, `DB_USER`, and `DB_PASSWORD` variables with your specific MySQL database credentials.
 
