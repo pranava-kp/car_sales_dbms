@@ -25,17 +25,15 @@ First, you need to set up the MySQL database. A sample database script is includ
 1.  Open your MySQL shell or client.
 2.  Execute the `PopulateDB.sql` script included in the project. This script will create the necessary database, tables, views, and insert sample data.
 
-### 2\. Configure Database Connection
+## 2\. Configure Database Connection
 
-Next, you need to update the database connection details in all `.jsp` files.
+1.  **Edit the configuration file**: Navigate to `web_content/config/` and open `DatabaseConfig.java`. Update the `JDBC_URL`, `DB_USER`, and `DB_PASSWORD` variables with your specific MySQL database credentials.
 
-  * In each `.jsp` file, find the following placeholders and replace them with your actual MySQL credentials:
+2.  **Recompile the file**: After saving your changes, you must recompile the Java file. Open a terminal in the project's root directory (`car_sales`) and run the following command:
 
-      * `jdbc:mysql://localhost:3306/rto` (Update the URL if your database name or host is different).
-      * `root` (Replace with your MySQL username).
-      * `MYSQLPASSWORD` (Replace with your MySQL password).
-
-    **Note**: You must update the password in every file for the application to work.
+    ```bash
+    javac -d web_content\WEB-INF\classes -cp web_content\WEB-INF\lib\mysql-connector-j-9.4.0.jar web_content\config\DatabaseConfig.java
+    ```
 
 ### 3\. Build the .war Archive
 

@@ -20,10 +20,10 @@ String dbPassword = DatabaseConfig.DB_PASSWORD;
 try {
     Class.forName("com.mysql.cj.jdbc.Driver");
     try (Connection con = DriverManager.getConnection(JDBC, dbUser, dbPassword);
-         PreparedStatement st = con.prepareStatement("SELECT * FROM user_login WHERE user_id=? AND password=?")) {
-        st.setString(1, user_id);
-        st.setString(2, password);
-        try (ResultSet rs = st.executeQuery()) {
+         Statement st = con.createStatement()) {
+
+        String sql = "SELECT * FROM user_login WHERE user_id='" + user_id + "' AND password='" + password + "'";
+        try (ResultSet rs = st.executeQuery(sql)) {
             if (rs.next()) {
                 // Store user_id in session
                 session.setAttribute("user_id", user_id);
